@@ -17,7 +17,7 @@ def extract_faces(emotions):
     print("Extracting faces...")
     for emotion in emotions:
         print("Processing %s data..." % emotion)
-        images = glob.glob('../data/raw/%s/*.jpg' % emotion)
+        images = glob.glob('../data/raw_emotion/%s/*.jpg' % emotion)
         for file_number, image in enumerate(images):
             frame = cv2.imread(image)
             faces = find_faces(frame)
