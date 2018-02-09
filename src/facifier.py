@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import os.path
 
 from cv2 import WINDOW_NORMAL
 from face_detection import find_faces
@@ -66,7 +67,7 @@ if __name__ == '__main__':
 
     # Load model
     fisher_face_emotion = cv2.face.FisherFaceRecognizer_create()
-    fisher_face_emotion.read('models/emotion_classifier_model_decent.xml')
+    fisher_face_emotion.read('models/emotion_classifier_model.xml')
 
     fisher_face_gender = cv2.face.FisherFaceRecognizer_create()
     fisher_face_gender.read('models/gender_classifier_model.xml')
@@ -77,11 +78,21 @@ if __name__ == '__main__':
         window_name = "Facifier Webcam (press ESC to exit)"
         start_webcam(fisher_face_emotion, fisher_face_gender, window_size=(1280, 720), window_name=window_name, update_time=15)
     elif (choice == 'n'):
+        run_loop = True
         window_name = "Facifier Static (press ESC to exit)"
         print("Default path is set to data/sample/")
-        path = "data/sample/"
-        path += input("Specify image file: ")
-        analyze_picture(fisher_face_emotion, fisher_face_gender, path, window_size=(1280, 720), window_name=window_name)
+        print("Type q or quit to end program")
+        while run_loop:
+            path = "../data/sample/"
+            file_name = input("Specify image file: ")
+            if file_name == "q" or file_name == "quit":
+                run_loop = False
+            else:
+                path += file_name
+                if os.path.isfile(path):
+                    analyze_picture(fisher_face_emotion, fisher_face_gender, path, window_size=(1280, 720), window_name=window_name)
+                else:
+                    print("File not found!")
     else:
-        print("Invalid input.")
+        print("Invalid input, exiting program.")
 
