@@ -2,6 +2,12 @@
 
 An emotion and gender detector based on facial features built with Python and OpenCV
 
+![Example_1](img/scared_1.jpg)
+
+![Example_2](img/the_grand_tour.jpg)
+
+![Example_3](img/student_group_1.jpg)
+
 ## Requirements
 
 ### Python3
@@ -67,6 +73,31 @@ Due to memory limitation only a handful of photos (2000+) from IMDB is used in b
 To switch versions, open **facifier.py** and search the following line:
 `fisher_face_gender.read('models/gender_classifier_model.xml')`
 and change the model path to the desired one.
+
+### Windows/Linux
+
+It turns out that a model trained using Windows can only work in Windows and that also applies to Linux. A new Windows-friendly model has been added to the model directory.
+
+For anyone using Windows, go to line 69-73 in `src/facifier.py`.
+```py3
+fisher_face_emotion = cv2.face.FisherFaceRecognizer_create()
+fisher_face_emotion.read('models/emotion_classifier_model.xml')
+
+fisher_face_gender = cv2.face.FisherFaceRecognizer_create()
+fisher_face_gender.read('models/gender_classifier_model.xml')
+```
+
+Change them into:
+```py3
+fisher_face_emotion = cv2.face.FisherFaceRecognizer_create()
+fisher_face_emotion.read('models/emotion_classifier_model_windows.xml')
+
+fisher_face_gender = cv2.face.FisherFaceRecognizer_create()
+fisher_face_gender.read('models/gender_classifier_model_windows.xml')
+```
+
+The application should work properly in Windows with the new models.
+
 
 ## FAQ
 
