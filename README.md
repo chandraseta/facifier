@@ -44,6 +44,43 @@ Fisherface recognizer requires every training data to have the same pixel count.
 
 To address this problem, **emotion\_data\_prep.py** and **gender\_data\_prep.py** are created. Both of them use face detection algorithm from **face\_detection.py** to detect faces in photos. Then, the picture would be normalized to uniform size (350px x 350px) and saved in grayscale to speed up the training process.
 
+### KDEF
+
+```
+├── data
+    ├── raw_emotion
+        ├── afraid
+        ├── angry
+        ├── disgusted
+        ├── happy
+        ├── neutral
+        ├── sad
+        ├── surprised
+    ├── raw_gender
+└── src
+```
+
+Before running `emotion_data_prep.py`, ensure that your file structure is as pictured above. You would need to extract the KDEF images and put them in the respective directories that resembles the appropriate emotion.
+
+While the KDEF database has the image shot from multiple angles, I only use **one angle**, where the person is staring straight to the camera.
+
+### IMDB-Wiki
+
+```
+├── data
+    ├── raw_emotion
+    ├── raw_gender
+        ├── female
+        ├── male
+└── src
+```
+
+Before running `gender_data_prep.py`, ensure that your file structure is as pictured above. You would need to extract the IMDB-Wiki images and put them in the respective directories that resembles the appropriate gender.
+
+You could also use images from KDEF database, just put the males in `data/raw_gender/male` and the females in `data/raw_gender/female`.
+
+Note that you **do not** have to include **all** images from the IMDB-Wiki. A personal computer with 8GB RAM could only handle at most around 2000 photos.
+
 ## About Models
 
 The included models are essential for the program to detect faces, emotions, and genders.
