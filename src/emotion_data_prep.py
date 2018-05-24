@@ -15,9 +15,15 @@ def remove_face_data(emotions):
 
 def extract_faces(emotions):
     print("Extracting faces...")
+    if not os.path.exists('../data'):
+        os.makedirs('../data')
+    if not os.path.exists('../data/emotion'):
+        os.makedirs('../data/emotion')
     for emotion in emotions:
         print("Processing %s data..." % emotion)
         images = glob.glob('../data/raw_emotion/%s/*.jpg' % emotion)
+        if not os.path.exists('../data/emotion/%s' % emotion):
+            os.makedirs('../data/emotion/%s' % emotion)
         for file_number, image in enumerate(images):
             frame = cv2.imread(image)
             faces = find_faces(frame)
