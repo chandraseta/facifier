@@ -2,11 +2,9 @@
 
 An emotion and gender detector based on facial features built with Python and OpenCV
 
-![Example_1](img/scared_1.jpg)
+![Example_1](img/the_grand_tour.jpg)
 
-![Example_2](img/the_grand_tour.jpg)
-
-![Example_3](img/student_group_1.jpg)
+![Example_2](img/scared_1.jpg)
 
 ## Requirements
 
@@ -145,8 +143,7 @@ Facifier can classify 7 basic emotions: **afraid**, **angry**, **disgusted**, **
 The box highlights any detected face whether from the webcam or in a static image. A **blue box** indicates that Facifier classified that person as a male and a **red box** indicates that Facifier classified that person as a female.
 
 ### Can I train a model using my own data?
-Of course, to train a model for **emotion classifier**, put images of each of the 7 emotions mentioned above in `data/raw_emotion/`
-For example, put the images that show happy emotion in `data/emotion/happy/`
+Of course, to train a model for **emotion classifier**, put images of each of the 7 emotions mentioned above in `data/raw_emotion/`. For example, put the images that show happy emotion in `data/emotion/happy/`
 Then, run:
 ```
 python3 emotion_data_prep.py
@@ -154,8 +151,7 @@ python3 train_emotion-classifier.py
 ```
 
 However, training model for **gender classifier** is more difficult due to lack of datasets available.
-Put the images of each gender in `data/gender/`
-For example, put the images of females in `data/raw_gender/female`
+Put the images of each gender in `data/raw_gender/`. For example, put the images of females in `data/raw_gender/female`
 Then, run:
 ```
 python3 gender_data_prep.py
