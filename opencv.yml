@@ -1,0 +1,7 @@
+name: opencv
+dependencies:
+- python=3.6
+- pip
+- pip:
+  - opencv-python
+  - opencv-contrib-python
